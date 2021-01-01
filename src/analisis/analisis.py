@@ -1,7 +1,11 @@
-import
+import pandas as pd
+import datetime
 
 def getMonthExpenses(data, month):
-    #TODO
+    df = getData()
+    year = datetime.datetime.utcnow().year
+    df = df[df['month'] == month & df['year'] == year]
+    return df['Importe'].sum()
 
 def getTotalMonthExpenses(data, month):
     #TODO
