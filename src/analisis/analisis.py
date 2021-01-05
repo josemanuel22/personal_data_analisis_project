@@ -19,3 +19,4 @@ def categorizeData(data, month, year=datetime.datetime.utcnow().year):
     for category in categories:
         for categoryStr in category:
             df[df['Concepto'].str.contains(categoryStr)].sum()
+            #TODO
