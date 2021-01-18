@@ -1,3 +1,6 @@
+import sys
+sys.path.append('../extract')
+
 import pandas as pd
 import datetime
 
@@ -14,9 +17,10 @@ def getTotalOfMonth(data, month, year=datetime.datetime.utcnow().year):
     return data['Importe'].sum()
 
 def categorizeData(data, month, year=datetime.datetime.utcnow().year):
-    data = data[data['month'] == month & data['year'] == year]
+    df = data[data['month'] == month][data['year'] == year]
     df.groupby(['Concepto']).sum()
+    dfResults = pd.DataFrame(columns=categories.keys())
     for category in categories:
         for categoryStr in category:
             df[df['Concepto'].str.contains(categoryStr)].sum()
-            #TODO
+
