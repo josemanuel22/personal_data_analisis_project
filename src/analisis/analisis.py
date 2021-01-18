@@ -21,6 +21,8 @@ def categorizeData(data, month, year=datetime.datetime.utcnow().year):
     df.groupby(['Concepto']).sum()
     dfResults = pd.DataFrame(columns=categories.keys())
     for category in categories:
+        res = 0
         for categoryStr in category:
-            df[df['Concepto'].str.contains(categoryStr)].sum()
+            res+=df[df['Concepto'].str.contains(categoryStr)]['Importe'].sum()
+        dfResults[category] = res
 
