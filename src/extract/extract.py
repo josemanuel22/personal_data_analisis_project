@@ -2,7 +2,7 @@ import pandas as pd
 
 def getData():
     path = "../../data/listado_de_movimientos.csv"
-    data = pd.read_csv(path, delimiter=';', dtype = {'Importe':float}, decimal=",")
+    data = pd.read_csv(path, delimiter=';', dtype = {'Importe':float, 'Concepto': str}, decimal=",")
     return cleanData(data)
 
 def cleanData(data):

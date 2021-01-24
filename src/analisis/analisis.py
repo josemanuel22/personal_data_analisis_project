@@ -28,6 +28,7 @@ def categorizeData(data, month, year=datetime.datetime.utcnow().year):
     for category in categories:
         res = 0
         for categoryStr in categories[category]:
+            print(df['Concepto'].str.contains(categoryStr))
             res+=df[df['Concepto'].str.contains(categoryStr)]['Importe'].sum()
         dfResults[category] = res
     return dfResults
